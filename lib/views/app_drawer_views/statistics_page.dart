@@ -94,7 +94,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Center(
                       child: Text(
                         AppStrings.of(context).todayData,
-                        style: appTheme.textTheme.title,
+                        style: appTheme.textTheme.subtitle2,
                       ),
                     ),
                   ),
@@ -142,7 +142,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Center(
                       child: Text(
                         AppStrings.of(context).overallData,
-                        style: appTheme.textTheme.title,
+                        style: appTheme.textTheme.subtitle2,
                       ),
                     ),
                   ),
@@ -218,7 +218,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
             model.getChartData(stats),
             animate: true,
             behaviors: [
-              DatumLegend(
+              DatumLegend<void>(
                 position: BehaviorPosition.bottom,
                 outsideJustification: OutsideJustification.middleDrawArea,
                 horizontalFirst: false,

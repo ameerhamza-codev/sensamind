@@ -26,7 +26,7 @@ class ActivityCompletedPage extends StatelessWidget {
               Text(
                 AppStrings.of(context).useSensaMind,
                 textAlign: TextAlign.center,
-                style: appTheme.textTheme.headline,
+                style: appTheme.textTheme.headline1,
               ),
               MaterialButton(
                 shape: const RoundedRectangleBorder(
@@ -43,7 +43,7 @@ class ActivityCompletedPage extends StatelessWidget {
                   ),
                   child: Text(
                     AppStrings.of(context).letsBegin,
-                    style: appTheme.textTheme.headline.copyWith(
+                    style: appTheme.textTheme.headline1.copyWith(
                       color: AppColors.appWhite,
                     ),
                   ),

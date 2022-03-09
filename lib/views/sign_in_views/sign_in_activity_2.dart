@@ -33,7 +33,7 @@ class SignInActivity2 extends StatelessWidget {
             ),
             DescriptionCard(
               descriptionText: AppStrings.of(context).question2,
-              descriptionStyle: appTheme.textTheme.headline,
+              descriptionStyle: appTheme.textTheme.headline1,
               textAlign: TextAlign.center,
               padding: const EdgeInsets.all(2.0),
             ),

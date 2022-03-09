@@ -48,7 +48,7 @@ class AppScaffold extends Scaffold {
           bottomNavigationBar: bottomNavigationBar,
           bottomSheet: bottomSheet,
           backgroundColor: backgroundColor,
-          resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
+          //resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
           resizeToAvoidBottomInset: resizeToAvoidBottomInset,
           primary: primary,
           drawerDragStartBehavior: drawerDragStartBehavior,

@@ -16,61 +16,61 @@ const AppBarTheme _appBarTheme = AppBarTheme(
 );
 const Color _primaryTextColor = Colors.black;
 const TextTheme _defaultPrimaryTextTheme = TextTheme(
-  display4: TextStyle(
+  headline5: TextStyle(
     debugLabel: 'App display4',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 112,
   ),
-  display3: TextStyle(
+  headline4: TextStyle(
     debugLabel: 'App display3',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 56,
   ),
-  display2: TextStyle(
+  headline3: TextStyle(
     debugLabel: 'App display2',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 48,
   ),
-  display1: TextStyle(
+  headline2: TextStyle(
     debugLabel: 'App display1',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 32,
   ),
-  headline: TextStyle(
+  headline1: TextStyle(
     debugLabel: 'App headline',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 24,
   ),
-  title: TextStyle(
-    debugLabel: 'App title',
+  subtitle2: TextStyle(
+    debugLabel: 'App title', //title
     inherit: true,
     color: _primaryTextColor,
     fontSize: 20,
   ),
-  subtitle: TextStyle(
+  subtitle1: TextStyle(
     debugLabel: 'App title',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 16,
   ),
-  subhead: TextStyle(
+  headline6: TextStyle(
     debugLabel: 'App subhead',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 18,
   ),
-  body2: TextStyle(
+  bodyText2: TextStyle(
     debugLabel: 'App body2',
     inherit: true,
     color: _primaryTextColor,
     fontSize: 12,
   ),
-  body1: TextStyle(
+  bodyText1: TextStyle(
     debugLabel: 'App body1',
     inherit: true,
     color: _primaryTextColor,

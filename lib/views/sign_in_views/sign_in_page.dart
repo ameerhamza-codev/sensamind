@@ -29,10 +29,10 @@ class _SignInPageState extends State<SignInPage> {
   void initState() {
     super.initState();
     _userNameController = TextEditingController(
-      text: AppUtils.isDebugMode ? 'testterr2020@gmail.com' : '',
+      text: AppUtils.isDebugMode ? 'codevtechnologies@gmail.com' : '',
     );
     _passwordController = TextEditingController(
-      text: AppUtils.isDebugMode ? '12345678' : '',
+      text: AppUtils.isDebugMode ? 'Test@123' : '',
     );
   }
 
@@ -128,7 +128,7 @@ class _SignInPageState extends State<SignInPage> {
                       color: AppColors.primaryColor,
                       child: Text(
                         AppStrings.of(context).login,
-                        style: appTheme.textTheme.title.copyWith(
+                        style: appTheme.textTheme.subtitle2.copyWith(
                           color: AppColors.appWhite,
                         ),
                       ),
@@ -139,7 +139,7 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: _onForgotPasswordTapped,
                   child: Text(
                     AppStrings.of(context).forgotPassword,
-                    style: appTheme.textTheme.title
+                    style: appTheme.textTheme.subtitle2
                         .copyWith(color: AppColors.primaryColor),
                   ),
                 ),
@@ -156,11 +156,11 @@ class _SignInPageState extends State<SignInPage> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       text: AppStrings.of(context).noAccount,
-                      style: appTheme.textTheme.title,
+                      style: appTheme.textTheme.subtitle2,
                       children: <TextSpan>[
                         TextSpan(
                           text: AppStrings.of(context).signUp,
-                          style: appTheme.textTheme.title
+                          style: appTheme.textTheme.subtitle2
                               .copyWith(color: AppColors.primaryColor),
                           recognizer: TapGestureRecognizer()
                             ..onTap = _onSignUpTapped,

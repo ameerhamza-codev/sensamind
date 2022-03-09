@@ -42,7 +42,7 @@ class _UnlockUserPageState extends State<UnlockUserPage> {
               ),
               Text(
                 AppStrings.of(context).unlockAccount,
-                style: appTheme.textTheme.title
+                style: appTheme.textTheme.subtitle2
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               Form(
@@ -103,7 +103,7 @@ class _UnlockUserPageState extends State<UnlockUserPage> {
                         ),
                         child: Text(
                           AppStrings.of(context).unlock,
-                          style: appTheme.textTheme.title.copyWith(
+                          style: appTheme.textTheme.subtitle2.copyWith(
                             color: AppColors.appWhite,
                           ),
                         ),

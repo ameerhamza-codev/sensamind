@@ -85,11 +85,11 @@ class _$AppUserSerializer implements StructuredSerializer<AppUser> {
           break;
         case 'age':
           result.age = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'gender':
           result.gender = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'argued':
           result.argued = serializers.deserialize(value,
@@ -97,7 +97,7 @@ class _$AppUserSerializer implements StructuredSerializer<AppUser> {
           break;
         case 'current_evolution':
           result.currentEvolution = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -116,13 +116,13 @@ class _$AppUser extends AppUser {
   @override
   final String zipCode;
   @override
-  final String age;
+  final int age;
   @override
-  final String gender;
+  final int gender;
   @override
   final String argued;
   @override
-  final String currentEvolution;
+  final int currentEvolution;
 
   factory _$AppUser([void Function(AppUserBuilder) updates]) =>
       (new AppUserBuilder()..update(updates)).build();
@@ -195,8 +195,8 @@ class _$AppUser extends AppUser {
           ..add('name', name)
           ..add('email', email)
           ..add('zipCode', zipCode)
-          ..add('age', age)
-          ..add('gender', gender)
+          ..add('age', age.toString())
+          ..add('gender', gender.toString())
           ..add('argued', argued)
           ..add('currentEvolution', currentEvolution))
         .toString();
@@ -222,21 +222,21 @@ class AppUserBuilder implements Builder<AppUser, AppUserBuilder> {
   String get zipCode => _$this._zipCode;
   set zipCode(String zipCode) => _$this._zipCode = zipCode;
 
-  String _age;
-  String get age => _$this._age;
-  set age(String age) => _$this._age = age;
+  int _age;
+  int get age => _$this._age;
+  set age(int age) => _$this._age = age;
 
-  String _gender;
-  String get gender => _$this._gender;
-  set gender(String gender) => _$this._gender = gender;
+  int _gender;
+  int get gender => _$this._gender;
+  set gender(int gender) => _$this._gender = gender;
 
   String _argued;
   String get argued => _$this._argued;
   set argued(String argued) => _$this._argued = argued;
 
-  String _currentEvolution;
-  String get currentEvolution => _$this._currentEvolution;
-  set currentEvolution(String currentEvolution) =>
+  int _currentEvolution;
+  int get currentEvolution => _$this._currentEvolution;
+  set currentEvolution(int currentEvolution) =>
       _$this._currentEvolution = currentEvolution;
 
   AppUserBuilder();

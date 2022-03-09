@@ -52,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             alignment: Alignment.center,
                             child: Text(
                               AppStrings.of(context).settingsDescription,
-                              style: appTheme.textTheme.title,
+                              style: appTheme.textTheme.subtitle2,
                             ),
                           ),
                           SwitchListTile(
@@ -63,7 +63,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             value: _soundSwitchValue,
                             title: Text(
                               AppStrings.of(context).toggleSounds,
-                              style: appTheme.textTheme.subhead,
+                              style: appTheme.textTheme.headline6,
                             ),
                           ),
                           SwitchListTile(
@@ -74,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             activeColor: AppColors.primaryColor,
                             title: Text(
                               AppStrings.of(context).toggleNotifications,
-                              style: appTheme.textTheme.subhead,
+                              style: appTheme.textTheme.headline6,
                             ),
                           ),
                         ],
@@ -85,7 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   DescriptionCard(
                     descriptionText:
                         AppStrings.of(context).bluetoothDescription,
-                    descriptionStyle: appTheme.textTheme.subhead,
+                    descriptionStyle: appTheme.textTheme.headline6,
                   ),
                   Container(
                     width: double.infinity,
@@ -105,7 +105,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   divider,
                   DescriptionCard(
                     descriptionText: AppStrings.of(context).signOutDescription,
-                    descriptionStyle: appTheme.textTheme.subhead,
+                    descriptionStyle: appTheme.textTheme.headline6,
                   ),
                   Container(
                     width: double.infinity,
@@ -165,7 +165,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       color: appTheme.primaryColor,
                       child: Text(
                         AppStrings.of(context).logout,
-                        style: appTheme.textTheme.subhead.copyWith(
+                        style: appTheme.textTheme.headline6.copyWith(
                           fontWeight: FontWeight.bold,
                           color: AppColors.appWhite,
                         ),

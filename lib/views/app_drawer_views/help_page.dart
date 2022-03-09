@@ -27,7 +27,7 @@ class HelpPage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   AppStrings.of(context).helpDescription,
-                  style: appTheme.textTheme.title,
+                  style: appTheme.textTheme.subtitle2,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -92,7 +92,7 @@ class _ButtonBuilder extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           child: Text(
             buttonLabel,
-            style: appTheme.textTheme.title.copyWith(
+            style: appTheme.textTheme.subtitle2.copyWith(
               color: AppColors.appWhite,
             ),
           ),

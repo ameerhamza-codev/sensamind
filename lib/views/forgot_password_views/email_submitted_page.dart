@@ -25,12 +25,12 @@ class ResetPasswordSubmittedPage extends StatelessWidget {
               ),
               Text(
                 AppStrings.of(context).appTitle,
-                style: appTheme.textTheme.title
+                style: appTheme.textTheme.subtitle2
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
                 AppStrings.of(context).passwordResetInstruction,
-                style: appTheme.textTheme.title
+                style: appTheme.textTheme.subtitle2
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               MaterialButton(
@@ -48,7 +48,7 @@ class ResetPasswordSubmittedPage extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   child: Text(
                     AppStrings.of(context).signIn,
-                    style: appTheme.textTheme.title.copyWith(
+                    style: appTheme.textTheme.subtitle2.copyWith(
                       color: AppColors.appWhite,
                     ),
                   ),

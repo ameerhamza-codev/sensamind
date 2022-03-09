@@ -39,7 +39,7 @@ class _ActivityStartedPageState extends State<ActivityStartedPage> {
               ),
               Text(
                 AppStrings.of(context).mwBetaGroup,
-                style: appTheme.textTheme.title,
+                style: appTheme.textTheme.subtitle2,
               ),
               Padding(
                 padding:
@@ -54,7 +54,7 @@ class _ActivityStartedPageState extends State<ActivityStartedPage> {
                 controller: _ageController,
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly
+                  FilteringTextInputFormatter.digitsOnly
                 ],
                 decoration: InputDecoration(
                   hintText: AppStrings.of(context).ageHint,
@@ -81,7 +81,7 @@ class _ActivityStartedPageState extends State<ActivityStartedPage> {
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   child: Text(
                     AppStrings.of(context).startSetup,
-                    style: appTheme.textTheme.title
+                    style: appTheme.textTheme.subtitle2
                         .copyWith(color: AppColors.appWhite),
                   ),
                 ),

@@ -34,11 +34,11 @@ abstract class AppUser implements Built<AppUser, AppUserBuilder> {
 
   @BuiltValueField()
   @nullable
-  String get age;
+  int get age;
 
   @BuiltValueField()
   @nullable
-  String get gender;
+  int get gender;
 
   @BuiltValueField()
   @nullable
@@ -46,5 +46,5 @@ abstract class AppUser implements Built<AppUser, AppUserBuilder> {
 
   @BuiltValueField(wireName: 'current_evolution')
   @nullable
-  String get currentEvolution;
+  int get currentEvolution;
 }

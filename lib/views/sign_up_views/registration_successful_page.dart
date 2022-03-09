@@ -25,7 +25,7 @@ class RegistrationSuccessfulPage extends StatelessWidget {
               ),
               Text(
                 AppStrings.of(context).verificationNeeded,
-                style: appTheme.textTheme.title
+                style: appTheme.textTheme.subtitle2
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               Padding(
@@ -53,7 +53,7 @@ class RegistrationSuccessfulPage extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   child: Text(
                     AppStrings.of(context).signIn,
-                    style: appTheme.textTheme.title
+                    style: appTheme.textTheme.subtitle2
                         .copyWith(color: AppColors.appWhite),
                   ),
                 ),

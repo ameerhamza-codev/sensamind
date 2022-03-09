@@ -160,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     color: Theme.of(context).primaryColor,
                     child: Text(
                       AppStrings.of(context).signUp,
-                      style: appTheme.textTheme.title.copyWith(
+                      style: appTheme.textTheme.subtitle2.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -174,11 +174,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     text: AppStrings.of(context).or,
-                    style: appTheme.textTheme.title,
+                    style: appTheme.textTheme.subtitle2,
                     children: <TextSpan>[
                       TextSpan(
                         text: AppStrings.of(context).signIn,
-                        style: appTheme.textTheme.title
+                        style: appTheme.textTheme.subtitle2
                             .copyWith(color: AppColors.primaryColor),
                         recognizer: TapGestureRecognizer()
                           ..onTap = _onSignInTapped,
