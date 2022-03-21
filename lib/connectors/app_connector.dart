@@ -57,12 +57,14 @@ class AppViewModel {
       c.Series<CauseClickData, String>(
         id: 'Statistics',
         domainFn: (CauseClickData causes, _) => causes.cause,
-        measureFn: (CauseClickData causes, _) => int.parse(causes.total),
+        measureFn: (CauseClickData causes, _) =>
+            int.parse(causes.total.toString()),
         data: stats?.causeClickData?.toList(),
         labelAccessorFn: (CauseClickData row, _) =>
-            '${((int.parse(row.total) / stats.total) * 100).toStringAsFixed(1)}%',
+            '${((int.parse(row.total.toString()) / stats.total) * 100).toStringAsFixed(1)}%',
         colorFn: (CauseClickData row, _) {
-          final double percent = (int.tryParse(row.total) ?? 0) / stats.total;
+          final double percent =
+              (int.tryParse(row.total.toString()) ?? 0) / stats.total;
           final Color color = Colors.accents[_] ?? AppColors.primaryColor;
           return c.Color(
             r: color.red,

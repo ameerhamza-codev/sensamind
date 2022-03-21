@@ -298,7 +298,7 @@ class AppBloc extends ApplicationBloc<AppEvent, AppState> {
     String buttonValue;
     String causeValue;
     for (final ButtonClickData data in stats.buttonClickData) {
-      final int buttonClick = int.tryParse(data.total);
+      final int buttonClick = int.tryParse(data.total.toString());
       if (buttonClick > maxValue) {
         buttonValue = data.button;
         maxValue = buttonClick;
@@ -308,7 +308,7 @@ class AppBloc extends ApplicationBloc<AppEvent, AppState> {
     maxValue = -1;
 
     for (final CauseClickData data in stats.causeClickData) {
-      final int causeClick = int.tryParse(data.total);
+      final int causeClick = int.tryParse(data.total.toString());
       if (causeClick > maxValue) {
         causeValue = data.cause;
         maxValue = causeClick;

@@ -8,10 +8,8 @@ part 'sign_in_success.g.dart';
 abstract class SignInSuccess
     implements Built<SignInSuccess, SignInSuccessBuilder> {
   factory SignInSuccess([void Function(SignInSuccessBuilder) updates]) =
-  _$SignInSuccess;
+      _$SignInSuccess;
   SignInSuccess._();
-
-
 
   Map<String, dynamic> toJson() {
     return serializers.serializeWith(SignInSuccess.serializer, this)
@@ -34,5 +32,5 @@ abstract class SignInSuccess
   AppUser get currentUser;
 
   @BuiltValueField(wireName: 'expires_in')
-  int get expiresIn;
+  String get expiresIn;
 }

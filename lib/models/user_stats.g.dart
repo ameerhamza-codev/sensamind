@@ -189,7 +189,7 @@ class _$ButtonClickDataSerializer
           break;
         case 'total':
           result.total = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -238,7 +238,7 @@ class _$CauseClickDataSerializer
           break;
         case 'total':
           result.total = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -535,7 +535,7 @@ class _$ButtonClickData extends ButtonClickData {
   @override
   final String button;
   @override
-  final String total;
+  final int total;
 
   factory _$ButtonClickData([void Function(ButtonClickDataBuilder) updates]) =>
       (new ButtonClickDataBuilder()..update(updates)).build();
@@ -587,9 +587,9 @@ class ButtonClickDataBuilder
   String get button => _$this._button;
   set button(String button) => _$this._button = button;
 
-  String _total;
-  String get total => _$this._total;
-  set total(String total) => _$this._total = total;
+  int _total;
+  int get total => _$this._total;
+  set total(int total) => _$this._total = total;
 
   ButtonClickDataBuilder();
 
@@ -628,7 +628,7 @@ class _$CauseClickData extends CauseClickData {
   @override
   final String cause;
   @override
-  final String total;
+  final int total;
 
   factory _$CauseClickData([void Function(CauseClickDataBuilder) updates]) =>
       (new CauseClickDataBuilder()..update(updates)).build();
@@ -680,9 +680,9 @@ class CauseClickDataBuilder
   String get cause => _$this._cause;
   set cause(String cause) => _$this._cause = cause;
 
-  String _total;
-  String get total => _$this._total;
-  set total(String total) => _$this._total = total;
+  int _total;
+  int get total => _$this._total;
+  set total(int total) => _$this._total = total;
 
   CauseClickDataBuilder();
 

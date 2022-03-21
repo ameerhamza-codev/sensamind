@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -79,8 +80,15 @@ class ApiService implements DataService {
     } on SocketException catch (error) {
       print(error);
     }
-    print(response.body);
-    return response.body;
+    final dynamic res = response.body;
+    final dynamic data = json.decode(res as String);
+    final Map<String, dynamic> newData = <String, dynamic>{
+      'success': data['success'],
+      'token': data['token'],
+      'user': data['user'],
+      'expires_in': data['expires_in'].toString(),
+    };
+    return json.encode(newData);
   }
 
   @override

@@ -30,7 +30,7 @@ class _$SignInSuccessSerializer implements StructuredSerializer<SignInSuccess> {
           specifiedType: const FullType(AppUser)),
       'expires_in',
       serializers.serialize(object.expiresIn,
-          specifiedType: const FullType(int)),
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -62,7 +62,7 @@ class _$SignInSuccessSerializer implements StructuredSerializer<SignInSuccess> {
           break;
         case 'expires_in':
           result.expiresIn = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -79,7 +79,7 @@ class _$SignInSuccess extends SignInSuccess {
   @override
   final AppUser currentUser;
   @override
-  final int expiresIn;
+  final String expiresIn;
 
   factory _$SignInSuccess([void Function(SignInSuccessBuilder) updates]) =>
       (new SignInSuccessBuilder()..update(updates)).build();
@@ -155,9 +155,9 @@ class SignInSuccessBuilder
   set currentUser(AppUserBuilder currentUser) =>
       _$this._currentUser = currentUser;
 
-  int _expiresIn;
-  int get expiresIn => _$this._expiresIn;
-  set expiresIn(int expiresIn) => _$this._expiresIn = expiresIn;
+  String _expiresIn;
+  String get expiresIn => _$this._expiresIn;
+  set expiresIn(String expiresIn) => _$this._expiresIn = expiresIn;
 
   SignInSuccessBuilder();
 

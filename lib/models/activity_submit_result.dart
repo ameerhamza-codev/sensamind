@@ -9,14 +9,14 @@ part 'activity_submit_result.g.dart';
 abstract class ActivitySubmitResult
     implements Built<ActivitySubmitResult, ActivitySubmitResultBuilder> {
   factory ActivitySubmitResult(
-      [void Function(ActivitySubmitResultBuilder) updates]) =
-  _$ActivitySubmitResult;
+          [void Function(ActivitySubmitResultBuilder) updates]) =
+      _$ActivitySubmitResult;
 
   ActivitySubmitResult._();
 
   Map<String, dynamic> toJson() {
     return serializers.serializeWith(ActivitySubmitResult.serializer, this)
-    as Map<String, dynamic>;
+        as Map<String, dynamic>;
   }
 
   static ActivitySubmitResult fromJson(Map<String, dynamic> json) {

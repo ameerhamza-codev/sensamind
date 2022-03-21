@@ -83,7 +83,7 @@ abstract class ButtonClickData
 
   String get button;
 
-  String get total;
+  int get total;
 }
 
 abstract class CauseClickData
@@ -107,5 +107,5 @@ abstract class CauseClickData
 
   String get cause;
 
-  String get total;
+  int get total;
 }

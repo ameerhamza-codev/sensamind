@@ -33,13 +33,13 @@ class _$AppUserSerializer implements StructuredSerializer<AppUser> {
       result
         ..add('age')
         ..add(serializers.serialize(object.age,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(int)));
     }
     if (object.gender != null) {
       result
         ..add('gender')
         ..add(serializers.serialize(object.gender,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(int)));
     }
     if (object.argued != null) {
       result
@@ -51,7 +51,7 @@ class _$AppUserSerializer implements StructuredSerializer<AppUser> {
       result
         ..add('current_evolution')
         ..add(serializers.serialize(object.currentEvolution,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(int)));
     }
     return result;
   }
