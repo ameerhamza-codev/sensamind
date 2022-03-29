@@ -59,6 +59,8 @@ ${AppStrings.of(context).reasonPressedDescription}''',
         padding: const EdgeInsets.all(16),
         child: Column(
           children: <Widget>[
+            Container(
+            ),
             AppConnector(
               condition:
                   (AppViewModel oldViewModel, AppViewModel newViewModel) {
@@ -124,11 +126,10 @@ ${AppStrings.of(context).reasonPressedDescription}''',
                       runSpacing: 8.0,
                       alignment: WrapAlignment.center,
                       spacing: 8.0,
-                      children: _buttonOneReasons.map(
-                        (String reason) {
+                      children: _buttonOneReasons.map((String reason) {
                           return RaisedButton(
                             onPressed: () async {
-                              _submit(model, reason);
+                              _submit(model, reason,1);
                             },
                             child: Text(
                               reason,
@@ -164,7 +165,8 @@ ${AppStrings.of(context).reasonPressedDescription}''',
                         (String reason) {
                           return RaisedButton(
                             onPressed: () async {
-                              _submit(model, reason);
+                              print("mommdel ${model}");
+                              _submit(model, reason,2);
                             },
                             child: Text(
                               reason,
@@ -186,10 +188,10 @@ ${AppStrings.of(context).reasonPressedDescription}''',
     );
   }
 
-  void _submit(AppViewModel model, String reason) {
+  void _submit(AppViewModel model, String reason,int button) {
     _submitting = true;
     model.reasonSubmit(
-      button: model.appInfo.userDetails.buttonTwoDetails,
+      button: button==1?model.appInfo.userDetails.buttonOneDetails:model.appInfo.userDetails.buttonTwoDetails,
       cause: reason,
     );
   }
@@ -203,7 +205,7 @@ ${AppStrings.of(context).reasonPressedDescription}''',
     if (await Vibration.hasVibrator()) {
       Vibration.vibrate();
     }
-    _snackController?.close?.call();
+    //_snackController?.close?.call();
     _snackController = _scaffoldKey.currentState.showSnackBar(const SnackBar(
       content: Text('Submitted the result!'),
       duration: Duration(seconds: 3),

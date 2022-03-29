@@ -269,10 +269,8 @@ class ApiService implements DataService {
   }
 
   @override
-  Future<bool> submitBtData({
-    String token,
-    List<Map<String, dynamic>> data,
-  }) async {
+  Future<bool> submitBtData({String token, List<Map<String, dynamic>> data}) async {
+    print("data bbbat $data");
     http.Response response;
     try {
       final String url = _buildUrl(ApiRoutes.submitBtClicks);
@@ -288,7 +286,7 @@ class ApiService implements DataService {
       print('$error=>$stacktrace');
       return false;
     }
-    print(response.body);
+    //print(response.body);
     if (response.body.contains(_apiFailureResponse))
       return false;
     else
