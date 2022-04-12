@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mindwatch/blocs/app_bloc/app_bloc.dart';
 import 'package:mindwatch/blocs/app_bloc/app_state.dart';
@@ -27,6 +29,7 @@ import 'package:mindwatch/views/sign_in_views/unlock_user_page.dart';
 import 'package:mindwatch/views/sign_up_views/registration_successful_page.dart';
 import 'package:mindwatch/views/sign_up_views/sign_up_page.dart';
 import 'package:mindwatch/views/splash_screen.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/preferences_service.dart';
@@ -46,6 +49,7 @@ Future<void> main() async {
     client: prefs,
   );
   final BLEService bleService = BLEService();
+  await Firebase.initializeApp();
   runApp(
     SensaMind(
       apiService: apiService,
@@ -153,11 +157,48 @@ class SensaMind extends StatefulWidget {
 
 class _SensaMindState extends State<SensaMind> {
   static const double _baseWidth = 400;
-
+  String _message = '';
+  void getMessage() async{
+    String token=await FirebaseMessaging().getToken();
+    print('device token $token');
+    FirebaseMessaging().configure(
+        onBackgroundMessage: (Map<String, dynamic> message)async{
+          print('received bg message');
+          setState(() => _message = message["notification"]["body"].toString());
+        },
+        onMessage: (Map<String, dynamic> message) async {
+          print('received message');
+          setState(() => _message = message["notification"]["body"].toString());
+          showOverlayNotification((context) {
+            return Card(
+              margin: EdgeInsets.all(10),
+              child: SafeArea(
+                child: ListTile(
+                  title: Text(message['notification']['title'].toString()),
+                  subtitle: Text(message['notification']['body'].toString()),
+                  trailing: IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        OverlaySupportEntry.of(context).dismiss();
+                      }),
+                ),
+              ),
+            );
+          }, duration: Duration(milliseconds: 4000));
+        }, onResume: (Map<String, dynamic> message) async {
+      print('on resume $message');
+      setState(() => _message = message["notification"]["body"].toString());
+    }, onLaunch: (Map<String, dynamic> message) async {
+      print('on launch $message');
+      setState(() => _message = message["notification"]["body"].toString());
+    });
+  }
   @override
   void initState() {
     super.initState();
     widget.notificationService.requestPermissions();
+    getMessage();
+
   }
 
   @override
@@ -169,28 +210,30 @@ class _SensaMindState extends State<SensaMind> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AppBloc>(
-      create: (BuildContext context) => AppBloc(
-        initialState: AppState.initState(),
-        dataService: widget.apiService,
-        prefs: widget.preferencesService,
-        bleService: widget.bleService,
-      ),
-      child: MaterialApp(
-        theme: appTheme,
-        locale: AppStrings.english,
-        localizationsDelegates: AppStrings.delegates,
-        supportedLocales: AppStrings.supportedLocales,
-        onGenerateRoute: AppRouter(routeMap: getRouteMap()).onGenerateRoute,
-        builder: (BuildContext context, Widget child) {
-          final MediaQueryData mediaQuery = MediaQuery.of(context);
-          return MediaQuery(
-            data: mediaQuery.copyWith(
-              textScaleFactor: mediaQuery.size.width / _baseWidth,
-            ),
-            child: child,
-          );
-        },
+    return OverlaySupport(
+      child: BlocProvider<AppBloc>(
+        create: (BuildContext context) => AppBloc(
+          initialState: AppState.initState(),
+          dataService: widget.apiService,
+          prefs: widget.preferencesService,
+          bleService: widget.bleService,
+        ),
+        child: MaterialApp(
+          theme: appTheme,
+          locale: AppStrings.english,
+          localizationsDelegates: AppStrings.delegates,
+          supportedLocales: AppStrings.supportedLocales,
+          onGenerateRoute: AppRouter(routeMap: getRouteMap()).onGenerateRoute,
+          builder: (BuildContext context, Widget child) {
+            final MediaQueryData mediaQuery = MediaQuery.of(context);
+            return MediaQuery(
+              data: mediaQuery.copyWith(
+                textScaleFactor: mediaQuery.size.width / _baseWidth,
+              ),
+              child: child,
+            );
+          },
+        ),
       ),
     );
   }

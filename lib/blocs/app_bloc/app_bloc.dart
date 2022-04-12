@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:built_collection/src/list.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mindwatch/blocs/app_bloc/app_event.dart';
@@ -153,8 +155,17 @@ class AppBloc extends ApplicationBloc<AppEvent, AppState> {
           .build();
       yield (state.toBuilder()..exceptionMessage = null).build();
     } else {
-      final SignInSuccess userDetails =
-          SignInSuccess.fromJson(json.decode(details) as Map<String, dynamic>);
+      final SignInSuccess userDetails = SignInSuccess.fromJson(json.decode(details) as Map<String, dynamic>);
+      FirebaseMessaging().subscribeToTopic("announcement");
+
+      FirebaseMessaging().getToken().then((value){
+        final Map<String, String> data = <String, String>{
+          "token":value,
+          "email":userDetails.currentUser.email.toString(),
+        };
+        FirebaseFirestore.instance.collection('users').add(data);
+      });
+
       yield* _afterLogin(userDetails);
     }
   }
@@ -175,6 +186,15 @@ class AppBloc extends ApplicationBloc<AppEvent, AppState> {
           .build();
       yield (state.toBuilder()..exceptionMessage = null).build();
     } else {
+      FirebaseMessaging().subscribeToTopic("announcement");
+
+      FirebaseMessaging().getToken().then((value){
+        final Map<String, String> data = <String, String>{
+          "token":value,
+          "email": event.email,
+        };
+        FirebaseFirestore.instance.collection('users').add(data);
+      });
       yield (state.toBuilder()..isRegistered = true).build();
     }
   }
