@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:built_collection/src/list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,7 +22,7 @@ import 'package:mindwatch/models/reason_submit_response.dart';
 import 'package:mindwatch/models/sign_in_success.dart';
 import 'package:mindwatch/models/user_stats.dart';
 import 'package:mindwatch/models/user_unlock.dart';
-
+import 'package:http/http.dart' as http;
 class AppBloc extends ApplicationBloc<AppEvent, AppState> {
   AppBloc({
     AppState initialState,
@@ -156,13 +157,35 @@ class AppBloc extends ApplicationBloc<AppEvent, AppState> {
       yield (state.toBuilder()..exceptionMessage = null).build();
     } else {
       final SignInSuccess userDetails = SignInSuccess.fromJson(json.decode(details) as Map<String, dynamic>);
+
+
       FirebaseMessaging().subscribeToTopic("announcement");
 
-      FirebaseMessaging().getToken().then((value){
+      FirebaseMessaging().getToken().then((value)async{
+        print("registration id $value");
         final Map<String, String> data = <String, String>{
           "token":value,
           "email":userDetails.currentUser.email.toString(),
         };
+        http.Response response;
+        final Map<String, String> _body = <String, String>{
+          'registration_id': value,
+          'type': Platform.isAndroid?"android":"ios",
+          'device_id': "device_id"
+        };
+        try {
+          print("device token Bearer ${userDetails.token}");
+          response = await http.post(
+            "http://api.sensamind.com/api/user/register-device-token",
+            body: _body,
+            headers: <String, String>{
+              'authorization': 'Bearer ${userDetails.token}',
+            },
+          );
+          print("fcm api res ${response.statusCode} ${response.body}");
+        } on SocketException catch (error) {
+          print(error);
+        }
         FirebaseFirestore.instance.collection('users').add(data);
       });
 
@@ -180,14 +203,13 @@ class AppBloc extends ApplicationBloc<AppEvent, AppState> {
     };
     final String details = await _dataService.signUp(body: _body);
     if (details.contains(_apiFailureResponse) || details.contains('error')) {
-      final AppError signUpError =
-          AppError.fromJson(json.decode(details) as Map<String, dynamic>);
+      final AppError signUpError = AppError.fromJson(json.decode(details) as Map<String, dynamic>);
       yield (state.toBuilder()..exceptionMessage = signUpError.error.allMessage)
           .build();
       yield (state.toBuilder()..exceptionMessage = null).build();
-    } else {
+    }
+    else {
       FirebaseMessaging().subscribeToTopic("announcement");
-
       FirebaseMessaging().getToken().then((value){
         final Map<String, String> data = <String, String>{
           "token":value,

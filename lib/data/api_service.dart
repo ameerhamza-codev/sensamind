@@ -29,6 +29,7 @@ class ApiRoutes {
   static const String getUserInfo = 'user';
   static const String updateUser = 'user';
   static const String submitUserClicks = 'user/click';
+  static const String fcmApi = 'admin/register-device-token';
   static const String submitBtClicks = 'user/bluetooth/click';
 
   static const String getClickStatistics = 'user/statistics';

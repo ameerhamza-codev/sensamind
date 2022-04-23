@@ -37,7 +37,7 @@ import 'data/preferences_service.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final ApiService apiService = ApiService(
-    host: 'dev-api.sensamind.com',
+    host: 'api.sensamind.com',
     scheme: 'http',
     scope: '/api',
   );
