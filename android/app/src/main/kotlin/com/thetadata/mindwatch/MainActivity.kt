@@ -1,4 +1,4 @@
-package com.thetadata.mindwatch
+package com.codev.sensamind
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
